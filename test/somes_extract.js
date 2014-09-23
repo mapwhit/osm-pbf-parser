@@ -4,14 +4,14 @@ var path = require('path');
 var parser = require('../');
 var through = require('through2');
 
-var expected = require('./data/auckland_first_50.json');
+var expected = require('./data/somes.json');
 
-test('auckland first 50 rows', function (t) {
+test('somes island full extract', function (t) {
     t.plan(expected.length);
     var osm = parser();
     var counts = {};
     
-    var file = path.join(__dirname, 'extracts/auckland.osm.pbf');
+    var file = path.join(__dirname, 'extracts/somes.osm.pbf');
     var rs = fs.createReadStream(file);
     rs.pipe(osm).pipe(through.obj(write));
     
