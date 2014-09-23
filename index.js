@@ -1,4 +1,4 @@
-var bun = require('bun');
+var combine = require('stream-combiner2');
 var BlobParser = require('./lib/blob_parser');
 var BlobEncoder = require('./lib/blob_encoder');
 var BlobDecompressor = require('./lib/decompress');
@@ -6,14 +6,11 @@ var PrimitivesParser = require('./lib/primitives');
 
 /* Default function returns the full pipeline */
 module.exports = function() {
-    return bun([
+    return combine.obj([
         new BlobParser(),
         new BlobDecompressor(),
         new PrimitivesParser()
-    ], {
-        objectMode: true,
-        highWaterMark: 0
-    });
+    ]);
 };
 
 /* Individual exports */
