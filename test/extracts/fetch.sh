@@ -7,10 +7,10 @@ file=somes.osm.pbf;
 
 if [ -e $file ]; then
     hash=`shasum "$file" | awk '{ print $1 }'`
-    if test "$hash" == f67e1a56ff6b43fefb204df3e1849c5beee9cd24; then
+    if test "$hash" = f67e1a56ff6b43fefb204df3e1849c5beee9cd24; then
         exit 0 # already exists with correct hash
     fi
 fi
 
-curl -o $file http://peter.johnson.s3.amazonaws.com/somes.osm.pbf \
+curl -s -o $file http://peter.johnson.s3.amazonaws.com/somes.osm.pbf \
 || (echo "failed to fetch fixture file: $file" >&2; exit 1)
