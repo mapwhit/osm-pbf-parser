@@ -9,12 +9,11 @@ var expected = require('./data/somes.json');
 test('somes island full extract', function (t) {
     t.plan(expected.length);
     var osm = parser();
-    var counts = {};
-    
+
     var file = path.join(__dirname, 'extracts/somes.osm.pbf');
     var rs = fs.createReadStream(file);
     rs.pipe(osm).pipe(through.obj(write));
-    
+
     function write (items, enc, next) {
         for (var i = 0; i < items.length; i++) {
             t.deepEqual(items[i], expected.shift());
