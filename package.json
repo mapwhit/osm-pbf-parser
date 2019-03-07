@@ -40,5 +40,9 @@
   "contributors": [
     "Astro"
   ],
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "license": "(MIT AND LGPL-2.1)"
 }
