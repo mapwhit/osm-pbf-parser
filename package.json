@@ -1,11 +1,10 @@
 {
-  "name": "osm-pbf-parser",
+  "name": "@mapwhit/osm-pbf-parser",
   "version": "2.3.0",
   "description": "streaming open street maps protocol buffer parser",
   "main": "index.js",
   "dependencies": {
     "brfs": "^1.4.1",
-    "inherits": "^2.0.1",
     "protocol-buffers": "^3.1.3",
     "readable-stream": "^2.0.4",
     "stream-combiner2": "^1.1.1"
@@ -24,10 +23,7 @@
       "brfs"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/substack/osm-pbf-parser.git"
-  },
+  "repository": "mapwhit/osm-pbf-parser",
   "homepage": "https://github.com/substack/osm-pbf-parser",
   "keywords": [
     "osm",
@@ -44,5 +40,5 @@
   "contributors": [
     "Astro"
   ],
-  "license": "MIT and LGPL"
+  "license": "(MIT AND LGPL-2.1)"
 }
