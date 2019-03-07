@@ -1,16 +1,16 @@
-var test = require('tape');
-var fs = require('fs');
-var path = require('path');
-var parser = require('../');
-var through = require('through2');
+const test = require('tape');
+const fs = require('fs');
+const path = require('path');
+const parser = require('../');
+const through = require('through2');
 
 test('somes counts', function (t) {
     t.plan(1);
-    var osm = parser();
-    var counts = {};
-    
-    var file = path.join(__dirname, 'extracts/somes.osm.pbf');
-    var rs = fs.createReadStream(file);
+    const osm = parser();
+    const counts = {};
+
+    const file = path.join(__dirname, 'extracts/somes.osm.pbf');
+    const rs = fs.createReadStream(file);
     rs.pipe(osm).pipe(through.obj(write, end));
 
     function write (row, enc, next) {
@@ -20,7 +20,7 @@ test('somes counts', function (t) {
         });
         next();
     }
-    
+
     function end () {
         console.error(counts);
         t.deepEqual(counts, {

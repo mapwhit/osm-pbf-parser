@@ -1,22 +1,22 @@
-var test = require('tape');
-var fs = require('fs');
-var path = require('path');
-var parser = require('../');
-var through = require('through2');
+const test = require('tape');
+const fs = require('fs');
+const path = require('path');
+const parser = require('../');
+const through = require('through2');
 
-var expected = require('./data/somes.json');
+const expected = require('./data/somes.json');
 
 test('somes island full extract', function (t) {
     t.plan(expected.length);
-    var osm = parser();
+    const osm = parser();
 
-    var file = path.join(__dirname, 'extracts/somes.osm.pbf');
-    var rs = fs.createReadStream(file);
+    const file = path.join(__dirname, 'extracts/somes.osm.pbf');
+    const rs = fs.createReadStream(file);
     rs.pipe(osm).pipe(through.obj(write));
 
     function write (items, enc, next) {
-        for (var i = 0; i < items.length; i++) {
-            t.deepEqual(items[i], expected.shift());
+        for (const item of items) {
+            t.deepEqual(item, expected.shift());
             if (expected.length === 0) break;
         }
         if (expected.length > 0) next();
