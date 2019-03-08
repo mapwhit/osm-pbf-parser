@@ -13,16 +13,14 @@ test('somes counts', function (t) {
     const rs = fs.createReadStream(file);
     rs.pipe(osm).pipe(through.obj(write, end));
 
-    function write (row, enc, next) {
-        row.forEach(function (item) {
-            if (!counts[item.type]) counts[item.type] = 0;
-            counts[item.type] ++;
-        });
+    function write (item, enc, next) {
+        if (!counts[item.type]) counts[item.type] = 0;
+        counts[item.type] ++;
         next();
     }
 
     function end () {
-        console.error(counts);
+        // console.error(counts);
         t.deepEqual(counts, {
             node: 1494,
             way: 77,
