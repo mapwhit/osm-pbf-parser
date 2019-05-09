@@ -1,6 +1,6 @@
 {
   "name": "@mapwhit/osm-pbf-parser",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "streaming open street maps protocol buffer parser",
   "main": "index.js",
   "dependencies": {
